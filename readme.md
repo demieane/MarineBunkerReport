@@ -15,7 +15,7 @@ Bunker Report App is a Windows Forms Desktop Application developed Visual Studio
 
 **Step 3)** Double click on the *setup.exe*
 
-**Step 4)** This will automatically run the application for the first time. From now on you can double clic on the *BunkerReports.application* to use the App
+**Step 4)** This will automatically run the application for the first time. From now on you can double click on the *BunkerReports.application* to use the App
 
 #### Requirements 
 > Windows Operating System with **.NET Framework 4.6.1** installed in the target machine
