@@ -51,7 +51,9 @@ This application helps you create a Weekly Bunker Report in just a few steps:
 
 ## Comments
 
-If you wish to create New **Weekly** and **Monthly** Bunker reports is it possible, if you just check both boxes on the top right. BUT for Updating already existing files, you should open the app two(2) seperate times for each separate task!
+> If you wish to create New **Weekly** and **Monthly** Bunker reports is it possible, if you just check both boxes on the top right.
+
+(!) BUT for Updating already existing files, you should open the app two(2) seperate times for each separate task!
 
 
 ## How to update the Fleet.txt
