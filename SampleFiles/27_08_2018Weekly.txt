@@ -1,0 +1,12 @@
+STATUS: Weekly Bunker Report Overview
+========================================================
+ Last Update at: 27_08_2018
+ Bunker Reports PENDING for the following VESSELS:
+
+ To update vessel names information in Fleet.txt
+ PATH: ..\Fleet.txt
+========================================================
+VESSEL_1
+VESSEL_2
+..
+VESSEL_32

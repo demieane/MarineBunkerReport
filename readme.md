@@ -9,7 +9,7 @@ Bunker Report App is a Windows Forms Desktop Application developed Visual Studio
 
 ## Installation Instructions
 
-**Step 1)** Make sure you have the compressed folder containing the application named *Bunker_Project.zip* in your computer. If you don't you can download it from [here][BetaRelease]
+**Step 1)** Make sure you have the compressed folder containing the application named *BetaRelease_v1.zip* in your computer. If you don't you can download it from [here][BetaRelease]
 
 **Step 2)** Unzip the folder to a destination in your computer
 
@@ -49,6 +49,10 @@ This application helps you create a Weekly Bunker Report in just a few steps:
     - To Update an already existing Weekly Bunker Report specify the Directory and the filename of the file to be updated. Please note that the file extention should NOT be included in the filename.
   - When the process is complete a database file in .xlsx format will be created, along with a .txt file with the same name. This .txt file contains information that helps the user to identify which reports where missing based on current Fleet Vessel Names. The exact location of the .txt file is included in the .txt so that the user can modify the Vessel Names if required! 
 
+## Comments
+
+> If you wish to create New **Weekly** and **Monthly** Bunker reports is it possible, if you just check both boxes on the top right.
+**BUT for Updating already existing files, you should open the app two(2) seperate times for each separate task!**
 
 
 ## How to update the Fleet.txt
@@ -75,5 +79,5 @@ License
 
    [epplus]: https://github.com/JanKallman/EPPlus
    [ltex]: https://github.com/paulyoder/LinqToExcel
-   [BetaRelease]: https://github.com/demieane/MarineBunkerReport/blob/master/BetaRelease.zip
+   [BetaRelease]: https://github.com/demieane/MarineBunkerReport/blob/master/BetaRelease_v1.zip
    
