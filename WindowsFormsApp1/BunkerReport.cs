@@ -726,6 +726,15 @@ namespace WindowsFormsApp1
             Console.WriteLine(" INITIALIZING: BUNKER REPORT DATABASE APPLICATION");
             Console.WriteLine(" ========================================================================");
 
+            if (checkBox1.Checked)
+            {
+                Weekly = true;
+            }
+            if (checkBox4.Checked)
+            {
+                NonWeekly = true;
+            }
+
             //============================================================================================
             // Directory: BUNKER REPORTS
             //============================================================================================
@@ -810,6 +819,8 @@ namespace WindowsFormsApp1
             
             if (AcceptableChoiceNewUpdate && AcceptableBunkerDirectoryPath && AcceptableDatabaseDirectoryPath && (Weekly || NonWeekly))
             {
+                
+
                 progressBar1.Value = 20;
 
                 if (UserDefinedRangeFO)
@@ -1000,12 +1011,12 @@ namespace WindowsFormsApp1
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            Weekly = true;
+            //Weekly = true;
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            NonWeekly = true;
+            //NonWeekly = true;
         }
     }
 }
