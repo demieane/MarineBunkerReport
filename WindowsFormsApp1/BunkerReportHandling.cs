@@ -29,6 +29,11 @@ namespace WindowsFormsApp1
                 double columnWidth = 15;
 
                 index = 3;
+                worksheet.Cells[index, 1].Value = "VESSELS";
+                worksheet.Cells[index , 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells[index , 1].Style.Fill.BackgroundColor.SetColor(Color.LightBlue);
+
+                
                 foreach (string asset in AssetNames)
                 {
                     worksheet.Column(1).Width = columnWidth + 5;

@@ -253,9 +253,9 @@ namespace WindowsFormsApp1
             this.checkBox4.AutoSize = true;
             this.checkBox4.Location = new System.Drawing.Point(577, 81);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(88, 21);
+            this.checkBox4.Size = new System.Drawing.Size(79, 21);
             this.checkBox4.TabIndex = 24;
-            this.checkBox4.Text = "Overview";
+            this.checkBox4.Text = "Monthly";
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 

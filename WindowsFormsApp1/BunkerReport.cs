@@ -41,9 +41,10 @@ namespace WindowsFormsApp1
         public string CreateNewDatabase { get; private set; }
         public string BunkerDatabaseDirectoryPath { get; private set; }
         public string BunkerDatabaseFilePathWeekly { get; private set; }
-        public string BunkerDatabaseFilePathOverview { get; private set; }
+        public string BunkerDatabaseFilePathMonthly { get; private set; }
+
         public string ResultsFilePathWeekly { get; private set; }
-        public string ResultsFilePathOverview { get; private set; }
+        public string ResultsFilePathMonthly { get; private set; }
         public string PathString { get; private set; }
 
         public string SheetName { get; private set; }
@@ -229,8 +230,8 @@ namespace WindowsFormsApp1
                     {
 
                         string pathWrite = PathString + DatabaseFileName + @".xlsx"; //@".csv";// @"\BunkerReportDatabaseWrite.csv";
-                        BunkerDatabaseFilePathOverview = pathWrite;
-                        ResultsFilePathOverview = PathString + DatabaseFileName + @".txt";
+                        BunkerDatabaseFilePathMonthly = pathWrite;
+                        ResultsFilePathMonthly = PathString + DatabaseFileName + @".txt";
                     }
                 }
                 else
@@ -244,9 +245,9 @@ namespace WindowsFormsApp1
                     }
                     if (NonWeekly)
                     {
-                        string pathWrite = PathString + CreateNewDatabase + @"Overview" + @".xlsx";// @"\BunkerReportDatabaseWrite.csv";
-                        BunkerDatabaseFilePathOverview = pathWrite;
-                        ResultsFilePathOverview = PathString + CreateNewDatabase + @"Overview" + @".txt";
+                        string pathWrite = PathString + CreateNewDatabase + @"Monthly" + @".xlsx";// @"\BunkerReportDatabaseWrite.csv";
+                        BunkerDatabaseFilePathMonthly = pathWrite;
+                        ResultsFilePathMonthly = PathString + CreateNewDatabase + @"Monthly" + @".txt";
                     }
                 }
             }
@@ -265,9 +266,9 @@ namespace WindowsFormsApp1
                 }
                 if (NonWeekly)
                 {
-                    BunkerDatabaseFilePathOverview = pathWrite;
-                    ResultsFilePathOverview = PathString + DatabaseFileName + @".txt";
-                    Console.WriteLine(BunkerDatabaseFilePathOverview);
+                    BunkerDatabaseFilePathMonthly = pathWrite;
+                    ResultsFilePathMonthly = PathString + DatabaseFileName + @".txt";
+                    Console.WriteLine(BunkerDatabaseFilePathMonthly);
                 }
 
                 //Console.WriteLine(PathString);
@@ -303,7 +304,7 @@ namespace WindowsFormsApp1
             else
             { Data.State = false; }
 
-            if (!File.Exists(BunkerDatabaseFilePathOverview) && NonWeekly)
+            if (!File.Exists(BunkerDatabaseFilePathMonthly) && NonWeekly)
             {
                 Console.WriteLine("File already exists. Oups!");
 
@@ -318,10 +319,10 @@ namespace WindowsFormsApp1
                 if (NonWeekly)
                 {
                     //OVERVIEW
-                    NewHandlingTools.OverviewSheet(BunkerDatabaseFilePathOverview, CurrentFleet);
+                    NewHandlingTools.OverviewSheet(BunkerDatabaseFilePathMonthly, CurrentFleet);
 
 
-                    using (FileStream fs = File.Create(ResultsFilePathOverview))
+                    using (FileStream fs = File.Create(ResultsFilePathMonthly))
                     {
                         Byte[] info =
                             new UTF8Encoding(true).GetBytes("STATUS: Bunker Report Monthly/Yearly Overview");
@@ -478,7 +479,7 @@ namespace WindowsFormsApp1
                     Console.WriteLine(" ================================================================");
                     Console.WriteLine();
 
-                    WriteIntoDatabaseXlsxNEW(BunkerDatabaseFilePathOverview, AssetName);
+                    WriteIntoDatabaseXlsxNEW(BunkerDatabaseFilePathMonthly, AssetName);
                 }
 
             }
@@ -506,21 +507,36 @@ namespace WindowsFormsApp1
                 int rowIndex_2 = worksheet.Cells[CoordinatesOfLastElement[1]].Start.Row;
 
                 // ADD DATA
-                worksheet.Column(colIndex_2 + 1).Width = 18;
+                worksheet.Column(colIndex_2 + 1).Width = 15;
                 worksheet.Column(colIndex_2 + 2).Width = 18;
+                worksheet.Column(colIndex_2 + 3).Width = 18;
 
                 string[] DateSplit = Vessel.RecordDateTime.Split(' ');
 
                 worksheet.Cells[1, colIndex_2 + 1].Style.WrapText = true;
-                worksheet.Cells[1, colIndex_2 + 1].Value = "Report: " + DateSplit[0].ToString();// + "\t Difference in [MT]";
+                int WeekNumber = new int();
+                WeekNumber = colIndex_2 / 3 + 1;
+
+                worksheet.Cells[1, colIndex_2 + 1].Value = "Week " + WeekNumber.ToString(); //+ DateSplit[0].ToString();// + "\t Difference in [MT]";
                 worksheet.Cells[1, colIndex_2 + 1].Style.Font.Bold = true;
                 worksheet.Cells[1, colIndex_2 + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
                 worksheet.Cells[1, colIndex_2 + 1].Style.Fill.BackgroundColor.SetColor(Color.LightBlue);
 
-                worksheet.Cells[1, colIndex_2 + 1, 1, colIndex_2 + 2].Merge = true; //Merge columns start and end range
-                worksheet.Cells[1, colIndex_2 + 1, 1, colIndex_2 + 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
+                worksheet.Cells[1, colIndex_2 + 1, 1, colIndex_2 + 3].Merge = true; //Merge columns start and end range
+                worksheet.Cells[1, colIndex_2 + 1, 1, colIndex_2 + 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
 
-                worksheet.Cells[2, colIndex_2 + 1].Value = "FO Difference [MT]";
+                worksheet.Cells[rowIndex_2, colIndex_2 + 1].Value = DateSplit[0].ToString();
+                worksheet.Cells[rowIndex_2, colIndex_2 + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                worksheet.Cells[rowIndex_2, colIndex_2 + 2].Value = Vessel.FO;
+                worksheet.Cells[rowIndex_2, colIndex_2 + 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                worksheet.Cells[rowIndex_2, colIndex_2 + 3].Value = Vessel.DO;
+                worksheet.Cells[rowIndex_2, colIndex_2 + 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+
+                // DATE REPORTED
+                worksheet.Cells[2, colIndex_2 + 1].Value = "Reported";
                 worksheet.Cells[2, colIndex_2 + 1].Style.Font.Bold = true;
                 worksheet.Cells[2, colIndex_2 + 1].Style.Fill.PatternType = ExcelFillStyle.Solid;
                 worksheet.Cells[2, colIndex_2 + 1].Style.Fill.BackgroundColor.SetColor(Color.AliceBlue);
@@ -528,7 +544,11 @@ namespace WindowsFormsApp1
                 worksheet.Cells[2, colIndex_2 + 1, 3, colIndex_2 + 1].Merge = true; //Merge columns start and end range
                 worksheet.Cells[2, colIndex_2 + 1, 3, colIndex_2 + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
 
-                worksheet.Cells[2, colIndex_2 + 2].Value = "DO Difference [MT]";
+                
+
+                // FO
+                worksheet.Cells[1, colIndex_2 + 2].Style.WrapText = true;
+                worksheet.Cells[2, colIndex_2 + 2].Value = "FO Difference [MT]";
                 worksheet.Cells[2, colIndex_2 + 2].Style.Font.Bold = true;
                 worksheet.Cells[2, colIndex_2 + 2].Style.Fill.PatternType = ExcelFillStyle.Solid;
                 worksheet.Cells[2, colIndex_2 + 2].Style.Fill.BackgroundColor.SetColor(Color.AliceBlue);
@@ -536,20 +556,29 @@ namespace WindowsFormsApp1
                 worksheet.Cells[2, colIndex_2 + 2, 3, colIndex_2 + 2].Merge = true; //Merge columns start and end range
                 worksheet.Cells[2, colIndex_2 + 2, 3, colIndex_2 + 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
 
-                worksheet.Cells[rowIndex_2, colIndex_2 + 1].Value = Vessel.FO;
-                worksheet.Cells[rowIndex_2, colIndex_2 + 2].Value = Vessel.DO;
+                // DO
+                worksheet.Cells[1, colIndex_2 + 3].Style.WrapText = true;
+                worksheet.Cells[2, colIndex_2 + 3].Value = "DO Difference [MT]";
+                worksheet.Cells[2, colIndex_2 + 3].Style.Font.Bold = true;
+                worksheet.Cells[2, colIndex_2 + 3].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                worksheet.Cells[2, colIndex_2 + 3].Style.Fill.BackgroundColor.SetColor(Color.AliceBlue);
+
+                worksheet.Cells[2, colIndex_2 + 3, 3, colIndex_2 + 3].Merge = true; //Merge columns start and end range
+                worksheet.Cells[2, colIndex_2 + 3, 3, colIndex_2 + 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
+
+               
 
                 // Colour cells when values are out of range
-                worksheet.Cells[rowIndex_2, colIndex_2 + 1].Style.Numberformat.Format = "0.00";
+                worksheet.Cells[rowIndex_2, colIndex_2 + 2].Style.Numberformat.Format = "0.00";
                 if (Vessel.FO >= Math.Abs(AcceptableRangeFO) || Vessel.FO <= -Math.Abs(AcceptableRangeFO))
                 {
-                    worksheet.Cells[rowIndex_2, colIndex_2 + 1].Style.Font.Color.SetColor(Color.Red);
+                    worksheet.Cells[rowIndex_2, colIndex_2 + 2].Style.Font.Color.SetColor(Color.Red);
                 }
                 
-                worksheet.Cells[rowIndex_2, colIndex_2 + 2].Style.Numberformat.Format = "0.00";
+                worksheet.Cells[rowIndex_2, colIndex_2 + 3].Style.Numberformat.Format = "0.00";
                 if (Vessel.DO >= Math.Abs(AcceptableRangeDO) || Vessel.DO <= -Math.Abs(AcceptableRangeDO))
                 {
-                    worksheet.Cells[rowIndex_2, colIndex_2 + 2].Style.Font.Color.SetColor(Color.Red);
+                    worksheet.Cells[rowIndex_2, colIndex_2 + 3].Style.Font.Color.SetColor(Color.Red);
                 }
 
                 BunkerReport.Save();
@@ -854,11 +883,11 @@ namespace WindowsFormsApp1
                 }
                 if (NonWeekly)
                 {
-                    Console.WriteLine(" ResultsFilePathOverview: {0}", ResultsFilePathOverview);
+                    Console.WriteLine(" ResultsFilePathOverview: {0}", ResultsFilePathMonthly);
 
                     // OUTPUT
                     using (System.IO.StreamWriter file =
-                                new System.IO.StreamWriter(ResultsFilePathOverview, true))
+                                new System.IO.StreamWriter(ResultsFilePathMonthly, true))
                     {
                         file.WriteLine("");
                         file.WriteLine("========================================================");
@@ -890,7 +919,7 @@ namespace WindowsFormsApp1
                         if (NonWeekly)
                         {
                             using (System.IO.StreamWriter file =
-                                new System.IO.StreamWriter(ResultsFilePathOverview, true))
+                                new System.IO.StreamWriter(ResultsFilePathMonthly, true))
                             {
                                 file.WriteLine(CurrentFleet[cnt]);
                             }
