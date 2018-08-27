@@ -49,6 +49,9 @@ This application helps you create a Weekly Bunker Report in just a few steps:
     - To Update an already existing Weekly Bunker Report specify the Directory and the filename of the file to be updated. Please note that the file extention should NOT be included in the filename.
   - When the process is complete a database file in .xlsx format will be created, along with a .txt file with the same name. This .txt file contains information that helps the user to identify which reports where missing based on current Fleet Vessel Names. The exact location of the .txt file is included in the .txt so that the user can modify the Vessel Names if required! 
 
+## Comments
+
+If you wish to create New **Weekly** and **Monthly** Bunker reports is it possible, if you just check both boxes on the top right. BUT for Updating already existing files, you should open the app two(2) seperate times for each separate task!
 
 
 ## How to update the Fleet.txt
