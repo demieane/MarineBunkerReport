@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="BunkerReports.exe" version="1.0.0.32" publicKeyToken="535d844831db42c3" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="bunkerreport_RMC_icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="BunkerReports" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="BunkerReports.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Antlr3.Runtime.dll" size="103424">
+      <assemblyIdentity name="Antlr3.Runtime" version="3.5.0.2" publicKeyToken="EB42632606E9261F" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>qgYkxzh0dor1kmBWi5G6jrfJ6lu0vbPz53Z7YcjQ/u4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BunkerReports.exe" size="115640">
+      <assemblyIdentity name="BunkerReports" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>3KVXjanNwHy1Xg/NFB5+PZAMNj9tmokyddOPpDZ54X0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EPPlus.dll" size="1295360">
+      <assemblyIdentity name="EPPlus" version="4.5.2.1" publicKeyToken="EA159FDAA78159A1" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>gQ2hf6OeFeGDJDSlr2Vw8eQOZ7naXEmiwG0Oph9TfiY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EPPlus.Utils.dll" size="19968">
+      <assemblyIdentity name="EPPlus.Utils" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>yv+lhfFAgRGJHl3o4TqJescHZJmKKPrsCrR7fucJXzw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LinqToExcel.dll" size="52736">
+      <assemblyIdentity name="LinqToExcel" version="1.11.0.0" publicKeyToken="9C8EA65A58F03F1F" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Sm43BiT+BXPj/gcs2LZgvD8wyPNpRO0TzxhUjlufAvk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="653824">
+      <assemblyIdentity name="Newtonsoft.Json" version="10.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>lz/XDOSOWsQzoQG0KHFoDFHi/roq7sPUAN6kEVrzong=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Remotion.dll" size="745472">
+      <assemblyIdentity name="Remotion" version="1.13.52.2" publicKeyToken="0669CF0452175907" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>aTmIL9/+5n06cev3Q3tcxovvWLeRVZGPI/R6s3zOmKo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Remotion.Data.Linq.dll" size="168960">
+      <assemblyIdentity name="Remotion.Data.Linq" version="1.13.52.2" publicKeyToken="0669CF0452175907" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>/m+SSyv6iZmScly659+mYROoa+6RbEaYIjNw54VUrVc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Remotion.Interfaces.dll" size="71680">
+      <assemblyIdentity name="Remotion.Interfaces" version="1.13.52.2" publicKeyToken="0669CF0452175907" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Rz/Ta0O/puS+1iQdB2iyrtde6VY9lGlAK/UpOECDZ88=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WebGrease.dll" size="1274520">
+      <assemblyIdentity name="WebGrease" version="1.6.5135.21930" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>flxCRiOdDVVkvJvem1mOnqUCGLggw4IbLB92ngTFQrA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="bunkerreport_RMC_icon.ico" size="36571">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>3rp28V+4RCeD8iIcSRjzsuz7h4bQFZPWEjWodaBmOYI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="BunkerReports.exe.config" size="1054">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fQbhufBErWAWhpO5tWsi3tpdCKYRJF7DtQPtg7yhqqQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Fleet.txt" size="546">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>PJPjsP41WDf1o5lzMH24hHmh2ROu2Oa3qqZzQYczj84=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=GUNION\tech006" issuerKeyHash="3f0a89d9d1eee91c8c770f7a18ec7b7730d05ed3" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>w+Lsq/8SR5zvh4LznykGccxTw+y/B7DRPQia0BqXVKI=</DigestValue></Reference></SignedInfo><SignatureValue>RmmPJDAyVptzE0P16iejjy9dnTNYX89IymBVsgb8wPm+Z5A/rA3G6O6zGmLytdYCWxUdOXKW1Uc5XuWXTDKllCIcon0ulZ2bm+inh6Tac6UFoiJdisOpepO/wiEeXRaAltB5bzXViDh261w2Ue7+lUljsm7CwN47O5Xf7JP1ylw=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>sqdmUeF0j8Q3Bavm5u3+S+/cKeULrsx1MRArwBnNGBEh3vJoeWZNdvwShkygtDW9H9uiZOOp2poMXNs977K8Rzz4PgoB2jLIDgBZX5zEiKILyAKYbLwgwclclXT3m3hBA4VflE0RBrJC3GTI3OymGv7Y1QynjSPeNQbCT4/ITEE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="a254971ad09a083dd1b007bfecc353cc7106299ff38287ef9c4712ffabece2c3" Description="" Url=""><as:assemblyIdentity name="BunkerReports.exe" version="1.0.0.32" publicKeyToken="535d844831db42c3" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=GUNION\tech006</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>6vHyfgw+EzivbS4xdPTk3FaooJzq6EY6AOodt3r8lxQ=</DigestValue></Reference></SignedInfo><SignatureValue>gC9VtJ6I0J7SFrPGaAdi0k+rbogb2JqwslnbkJJwvjjXrNm1J4Yc1hPYaOyT60cgtkqQrBDhf/XW5W2N8yEix34slBa+S+oOFL99VZe6gdRdt3AThGJ0sY2byYwyiqEGZgb5iTqSH7xV0OA5PtSnoLGKF3JiRDfpqXFUzjJQ0gw=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>sqdmUeF0j8Q3Bavm5u3+S+/cKeULrsx1MRArwBnNGBEh3vJoeWZNdvwShkygtDW9H9uiZOOp2poMXNs977K8Rzz4PgoB2jLIDgBZX5zEiKILyAKYbLwgwclclXT3m3hBA4VflE0RBrJC3GTI3OymGv7Y1QynjSPeNQbCT4/ITEE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB0TCCATqgAwIBAgIQMAZEaUEGTZtBZb6uRexZCjANBgkqhkiG9w0BAQsFADAnMSUwIwYDVQQDHhwARwBVAE4ASQBPAE4AXAB0AGUAYwBoADAAMAA2MB4XDTE4MDcyNTA4NTgwMVoXDTE5MDcyNTE0NTgwMVowJzElMCMGA1UEAx4cAEcAVQBOAEkATwBOAFwAdABlAGMAaAAwADAANjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAsqdmUeF0j8Q3Bavm5u3+S+/cKeULrsx1MRArwBnNGBEh3vJoeWZNdvwShkygtDW9H9uiZOOp2poMXNs977K8Rzz4PgoB2jLIDgBZX5zEiKILyAKYbLwgwclclXT3m3hBA4VflE0RBrJC3GTI3OymGv7Y1QynjSPeNQbCT4/ITEECAwEAATANBgkqhkiG9w0BAQsFAAOBgQADc8VfytW2T/STNwPO7QbcIr1ItylAzTpxCTlkItPv/ZCum0RJpTEl5m1R6OJZJjCPU4rZTS4jQaB9eKNcn2MXZXnirWTbMRdQQJSyBV4thPXZWbiBoCEFzGpoI3RhLSDBIruhqbWWv4AeXvxXhOkynWSct8S6aHBXdsr/+5fchQ==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
