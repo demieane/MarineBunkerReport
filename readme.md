@@ -9,7 +9,7 @@ Bunker Report App is a Windows Forms Desktop Application developed Visual Studio
 
 ## Installation Instructions
 
-**Step 1)** Make sure you have the compressed folder containing the application named *Bunker_Project_App.zip* in your computer. If you don't you can download it from [here][BetaRelease]
+**Step 1)** Make sure you have the compressed folder containing the application named *BunkerReportApp.zip* in your computer. If you don't you can download it from [here][BetaRelease]
 
 **Step 2)** Unzip the folder to a destination in your computer
 
