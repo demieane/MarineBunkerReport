@@ -104,6 +104,8 @@ namespace WindowsFormsApp1
             textBox3.Text = AcceptableRangeFO.ToString();
             label7.Text = "Acceptable LO Difference [mt]:";
             textBox5.Text = AcceptableRangeDO.ToString();
+
+            
         }
 
         //================================================================
@@ -730,11 +732,19 @@ namespace WindowsFormsApp1
             {
                 Weekly = true;
             }
+            else
+            {
+                Weekly = false;
+            }
+
             if (checkBox4.Checked)
             {
                 NonWeekly = true;
             }
-
+            else
+            {
+                NonWeekly = false;
+            }
             //============================================================================================
             // Directory: BUNKER REPORTS
             //============================================================================================
@@ -1017,6 +1027,11 @@ namespace WindowsFormsApp1
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             //NonWeekly = true;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
