@@ -350,6 +350,8 @@ namespace WindowsFormsApp1
                 Console.WriteLine("\n File path to be examined: {0} ", BunkerReport);
 
                 var excelFile = new ExcelQueryFactory(BunkerReport);
+                excelFile.DatabaseEngine = LinqToExcel.Domain.DatabaseEngine.Ace;
+
                 var worksheetNames = excelFile.GetWorksheetNames();
                 Console.WriteLine(worksheetNames);
 
@@ -368,6 +370,7 @@ namespace WindowsFormsApp1
                 }
 
                 Console.WriteLine("Sheetname: {0}", SheetName);
+
                 var cellID = from c1 in excelFile.WorksheetRangeNoHeader("C6", "E6", SheetName) select c1; //Selects data within the B3 to G10 cell range
                 var cellPosition = from c2 in excelFile.WorksheetRangeNoHeader("H6", "J6", SheetName) select c2;
                 var cellFO = from c3 in excelFile.WorksheetRangeNoHeader("J27", "J27", SheetName) select c3;
