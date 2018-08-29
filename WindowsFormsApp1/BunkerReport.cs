@@ -379,12 +379,13 @@ namespace WindowsFormsApp1
                 Counter = Counter + 1;
                 Console.WriteLine("\n File path to be examined: {0} ", BunkerReport);
 
-                var excelFile = new ExcelQueryFactory(BunkerReport);
-                //{
-                //    ReadOnly = true
-                //};
+                var excelFile = new ExcelQueryFactory(BunkerReport)//;
+                {
+                    ReadOnly = true
+                };
                 excelFile.DatabaseEngine = LinqToExcel.Domain.DatabaseEngine.Ace;
  
+                /*
                 var worksheetNames = excelFile.GetWorksheetNames();
                 Console.WriteLine(worksheetNames);
 
@@ -401,14 +402,19 @@ namespace WindowsFormsApp1
                     }
                     i = i + 1;
                 }
-
-                //SheetName = "Report";
+                */
+                // TODO: BECAUSE THE FILE IN LOCKED THE ABOVE PART OF CODE CANNOT BE USED
+                // THIS INFORMATION IS HIDDEN!
+                SheetName = "Report";
                 Console.WriteLine("Sheetname: {0}", SheetName);
 
                 var cellID = from c1 in excelFile.WorksheetRangeNoHeader("C6", "E6", SheetName) select c1; //Selects data within the B3 to G10 cell range
                 var cellPosition = from c2 in excelFile.WorksheetRangeNoHeader("H6", "J6", SheetName) select c2;
-                var cellFO = from c3 in excelFile.WorksheetRangeNoHeader("J27", "J27", SheetName) select c3;
-                var cellDO = from c4 in excelFile.WorksheetRangeNoHeader("J39", "J39", SheetName) select c4;
+                var cellFO = from c3 in excelFile.WorksheetRangeNoHeader("J29", "J29", SheetName) select c3;
+                var cellDO = from c4 in excelFile.WorksheetRangeNoHeader("J43", "J43", SheetName) select c4;
+                //var cellFO = from c3 in excelFile.WorksheetRangeNoHeader("J27", "J27", SheetName) select c3;
+                //var cellDO = from c4 in excelFile.WorksheetRangeNoHeader("J39", "J39", SheetName) select c4;
+
                 var cellDateTime = from c5 in excelFile.WorksheetRangeNoHeader("H7", "J7", SheetName) select c5;
 
                 //VesselInfo Vessel = new VesselInfo();

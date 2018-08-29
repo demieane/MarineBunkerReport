@@ -35,7 +35,7 @@ public class MultipleFiles
             Console.WriteLine("Last characters: {0}", result);
             Console.WriteLine("Last characters: {0}", result_1);
             Console.WriteLine("Last characters: {0}", result_2);
-            if (result == ".xml" || result == ".xls" || result == ".xlt" || result_1 == ".xlsx" || result_2 == "xls" || result_2 == "xlt")
+            if (result == ".xls" || result == ".xlt" || result_1 == ".xlsx" || result_2 == "xls" || result_2 == "xlt")
             {
                 ProcessFile(fileName);
                 Console.WriteLine("File path ID: {0}", index);
