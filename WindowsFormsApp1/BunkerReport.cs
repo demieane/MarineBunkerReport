@@ -412,10 +412,17 @@ namespace WindowsFormsApp1
                 var cellPosition = from c2 in excelFile.WorksheetRangeNoHeader("H6", "J6", SheetName) select c2;
                 var cellFO = from c3 in excelFile.WorksheetRangeNoHeader("J29", "J29", SheetName) select c3;
                 var cellDO = from c4 in excelFile.WorksheetRangeNoHeader("J43", "J43", SheetName) select c4;
+                
+
                 //var cellFO = from c3 in excelFile.WorksheetRangeNoHeader("J27", "J27", SheetName) select c3;
                 //var cellDO = from c4 in excelFile.WorksheetRangeNoHeader("J39", "J39", SheetName) select c4;
 
                 var cellDateTime = from c5 in excelFile.WorksheetRangeNoHeader("H7", "J7", SheetName) select c5;
+                var cellRemarks = from c6 in excelFile.WorksheetRangeNoHeader("B45", "J47", SheetName) select c6;
+
+                var cellFORemaining = from c7 in excelFile.WorksheetRangeNoHeader("J26", "J26", SheetName) select c7;
+
+                var cellDORemaining = from c8 in excelFile.WorksheetRangeNoHeader("J40", "J40", SheetName) select c8;
 
                 //VesselInfo Vessel = new VesselInfo();
 
@@ -449,6 +456,35 @@ namespace WindowsFormsApp1
                     Vessel.RecordDateTime = a5[0];
                 }
 
+                int ii = 0;
+                foreach (var a6 in cellRemarks)
+                {
+                    Console.WriteLine(" ii : {0}", ii);
+                    Console.WriteLine(" Remarks : {0}", a6[ii].ToString());
+                    if (!string.IsNullOrEmpty(a6[ii].ToString()))
+                    {
+                        Vessel.Remarks = a6[ii].ToString();
+                        Console.WriteLine(" Vessel.Remarks : {0}", Vessel.Remarks);
+                    }
+                    
+                    //Console.WriteLine(" Vessel.Remarks : {0}", Vessel.Remarks);
+                    ii = ii + 1;
+                    //Vessel.Remarks = a6[0].ToString();
+                }
+
+                foreach (var a7 in cellFORemaining)
+                {
+                    Vessel.FO_1 = float.Parse(a7[0]);
+                }
+
+                
+                foreach (var a8 in cellDORemaining)
+                {
+                    Vessel.DO_1 = float.Parse(a8[0]);
+                }
+                
+
+
                 excelFile.Dispose();
 
                 Console.WriteLine("\nDATA RETRIEVED:");
@@ -456,7 +492,10 @@ namespace WindowsFormsApp1
                 Console.WriteLine(" Vessel Position:  {0}", Vessel.Position);
                 Console.WriteLine(" Vessel DateTime:  {0}", Vessel.RecordDateTime);
                 Console.WriteLine(" FO [MT] : {0}", Vessel.FO);
-                Console.WriteLine(" DO [MT] : {0}", Vessel.DO);
+                Console.WriteLine(" FO Remaing On board [MT] : {0}", Vessel.FO_1);
+                Console.WriteLine(" FO [MT] : {0}", Vessel.DO);
+                Console.WriteLine(" DO Remaing On board [MT] : {0}", Vessel.DO_1);
+                Console.WriteLine(" Remarks : {0}", Vessel.Remarks);
 
                 int cnt = 0;
                 Console.WriteLine("EUREKA {0}", eureka);
@@ -533,6 +572,7 @@ namespace WindowsFormsApp1
 
             }
         }
+
 
         //================================================================
         // Writes Data into Database .xlsx and .txt Files MONTHLY
@@ -674,18 +714,27 @@ namespace WindowsFormsApp1
 
                 // Colour cells when values are out of range
                 worksheet.Cells[rowCnt + 1, 5].Style.Numberformat.Format = "0.00";
+                worksheet.Cells[rowCnt + 1, 6].Style.Numberformat.Format = "0.00";
                 if (Vessel.FO >= Math.Abs(AcceptableRangeFO) || Vessel.FO <= -Math.Abs(AcceptableRangeFO))
                 {
                     //worksheet.Cells[rowCnt + 1, 5].Style.Fill.PatternType = ExcelFillStyle.Solid;
                     worksheet.Cells[rowCnt + 1, 5].Style.Font.Color.SetColor(Color.Red);
                 }
 
-                worksheet.Cells[rowCnt + 1, 6].Value = Vessel.DO;
-                worksheet.Cells[rowCnt + 1, 6].Style.Numberformat.Format = "0.00";
+                worksheet.Cells[rowCnt + 1, 6].Value = Vessel.FO_1;
+
+                worksheet.Cells[rowCnt + 1, 7].Value = Vessel.DO;
+                worksheet.Cells[rowCnt + 1, 7].Style.Numberformat.Format = "0.00";
+                worksheet.Cells[rowCnt + 1, 8].Style.Numberformat.Format = "0.00";
                 if (Vessel.DO >= Math.Abs(AcceptableRangeDO) || Vessel.DO <= -Math.Abs(AcceptableRangeDO))
                 {
-                    worksheet.Cells[rowCnt + 1, 6].Style.Font.Color.SetColor(Color.Red);
+                    worksheet.Cells[rowCnt + 1, 7].Style.Font.Color.SetColor(Color.Red);
                 }
+
+                worksheet.Cells[rowCnt + 1, 8].Value = Vessel.DO_1;
+
+                worksheet.Cells[rowCnt + 1, 9].Value = Vessel.Remarks;
+
                 BunkerReport.Save();
             }
         }
@@ -919,12 +968,15 @@ namespace WindowsFormsApp1
 
                 ExctractInfo();
                 progressBar1.Value = 80;
-                Console.WriteLine(" DATA RETRIEVED:");
+                Console.WriteLine("\nDATA RETRIEVED:");
                 Console.WriteLine(" Vessel Name :  {0}", Vessel.Name);
                 Console.WriteLine(" Vessel Position:  {0}", Vessel.Position);
                 Console.WriteLine(" Vessel DateTime:  {0}", Vessel.RecordDateTime);
                 Console.WriteLine(" FO [MT] : {0}", Vessel.FO);
-                Console.WriteLine(" DO [MT] : {0}", Vessel.DO);
+                Console.WriteLine(" FO Remaing On board [MT] : {0}", Vessel.FO_1);
+                Console.WriteLine(" FO [MT] : {0}", Vessel.DO);
+                Console.WriteLine(" DO Remaing On board [MT] : {0}", Vessel.DO_1);
+                Console.WriteLine(" Remarks : {0}", Vessel.Remarks);
 
                 string FleetPath = System.Environment.CurrentDirectory;
                 FleetPath = FleetPath + @"\Fleet.txt";

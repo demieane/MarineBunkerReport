@@ -130,11 +130,14 @@ namespace WindowsFormsApp1
             worksheet.Column(4).Width = columnWidth;
             worksheet.Column(5).Width = columnWidth;
             worksheet.Column(6).Width = columnWidth;
+            worksheet.Column(7).Width = columnWidth;
+            worksheet.Column(8).Width = columnWidth;
+            worksheet.Column(9).Width = 2 * columnWidth;
 
-                worksheet.Cells[1, 1].Value = "BUNKER REPORT DATASHEET";
+            worksheet.Cells[1, 1].Value = "BUNKER REPORT DATASHEET";
 
             //Ok now format the values;
-            using (var range = worksheet.Cells[1, 1, 1, 6])
+            using (var range = worksheet.Cells[1, 1, 1, 9])
             {
                 range.Style.Font.Bold = true;
                 range.Style.Fill.PatternType = ExcelFillStyle.Solid;
@@ -142,7 +145,7 @@ namespace WindowsFormsApp1
                 //range.Style.Font.Color.SetColor(Color.White);
             }
 
-            using (var range = worksheet.Cells[2, 1, 3, 6])
+            using (var range = worksheet.Cells[2, 1, 3, 9])
             {
                 range.Style.Font.Bold = true;
                 range.Style.Fill.PatternType = ExcelFillStyle.Solid;
@@ -151,8 +154,8 @@ namespace WindowsFormsApp1
             }
 
 
-            worksheet.Cells[1, 1, 1, 6].Merge = true; //Merge columns start and end range
-            worksheet.Cells[1, 1, 1, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
+            worksheet.Cells[1, 1, 1, 9].Merge = true; //Merge columns start and end range
+            worksheet.Cells[1, 1, 1, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
 
             worksheet.Cells[2, 1, 3, 1].Merge = true; //Merge columns start and end range
             worksheet.Cells[2, 1, 3, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
@@ -172,6 +175,16 @@ namespace WindowsFormsApp1
             worksheet.Cells[2, 6, 3, 6].Merge = true; //Merge columns start and end range
             worksheet.Cells[2, 6, 3, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
 
+            worksheet.Cells[2, 7, 3, 7].Merge = true; //Merge columns start and end range
+            worksheet.Cells[2, 7, 3, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
+
+
+            worksheet.Cells[2, 8, 3, 8].Merge = true; //Merge columns start and end range
+            worksheet.Cells[2, 8, 3, 8].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
+
+            worksheet.Cells[2, 9, 3, 9].Merge = true; //Merge columns start and end range
+            worksheet.Cells[2, 9, 3, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
+
 
             //Add the headers
             worksheet.Cells[2, 1].Value = "Registry";
@@ -179,15 +192,21 @@ namespace WindowsFormsApp1
             worksheet.Cells[2, 3].Value = "Position";
             worksheet.Cells[2, 4].Value = "Entry Date";
             worksheet.Cells[2, 5].Value = "FO Difference [MT]";
-            worksheet.Cells[2, 6].Value = "DO Difference [MT]";
+            worksheet.Cells[2, 6].Value = "FO On Board [MT]";
+            worksheet.Cells[2, 7].Value = "DO Difference [MT]";
+            worksheet.Cells[2, 8].Value = "DO On Board [MT]";
+            worksheet.Cells[2, 9].Value = "Remarks";
 
             worksheet.Column(5).Style.WrapText = true;
             worksheet.Column(6).Style.WrapText = true;
+            worksheet.Column(7).Style.WrapText = true;
+            worksheet.Column(8).Style.WrapText = true;
+            worksheet.Column(9).Style.WrapText = true;
 
 
 
-            //string filePath = @"C:\Users\tech006\Desktop\Praktiki2018\BunkerReport\NewBunkerReport.xlsx";
-            NewBunkerReport.SaveAs(new FileInfo(FilePath));
+                //string filePath = @"C:\Users\tech006\Desktop\Praktiki2018\BunkerReport\NewBunkerReport.xlsx";
+                NewBunkerReport.SaveAs(new FileInfo(FilePath));
         }
     }
 
@@ -215,7 +234,7 @@ namespace WindowsFormsApp1
                     worksheetNew.Cells[1, 1].Value = "BUNKER REPORT DATASHEET";
 
                     //Ok now format the values;
-                    using (var range = worksheetNew.Cells[1, 1, 1, 6])
+                    using (var range = worksheetNew.Cells[1, 1, 1, 9])
                     {
                         range.Style.Font.Bold = true;
                         range.Style.Fill.PatternType = ExcelFillStyle.Solid;
@@ -223,7 +242,7 @@ namespace WindowsFormsApp1
                         //range.Style.Font.Color.SetColor(Color.White);
                     }
 
-                    using (var range = worksheetNew.Cells[2, 1, 3, 6])
+                    using (var range = worksheetNew.Cells[2, 1, 3, 9])
                     {
                         range.Style.Font.Bold = true;
                         range.Style.Fill.PatternType = ExcelFillStyle.Solid;
@@ -232,8 +251,8 @@ namespace WindowsFormsApp1
                     }
 
 
-                    worksheetNew.Cells[1, 1, 1, 6].Merge = true; //Merge columns start and end range
-                    worksheetNew.Cells[1, 1, 1, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
+                    worksheetNew.Cells[1, 1, 1, 9].Merge = true; //Merge columns start and end range
+                    worksheetNew.Cells[1, 1, 1, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
 
                     worksheetNew.Cells[2, 1, 3, 1].Merge = true; //Merge columns start and end range
                     worksheetNew.Cells[2, 1, 3, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
@@ -253,19 +272,34 @@ namespace WindowsFormsApp1
                     worksheetNew.Cells[2, 6, 3, 6].Merge = true; //Merge columns start and end range
                     worksheetNew.Cells[2, 6, 3, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
 
+                    worksheetNew.Cells[2, 7, 3, 7].Merge = true; //Merge columns start and end range
+                    worksheetNew.Cells[2, 7, 3, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
+
+                    worksheetNew.Cells[2, 8, 3, 8].Merge = true; //Merge columns start and end range
+                    worksheetNew.Cells[2, 8, 3, 8].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
+
+                    worksheetNew.Cells[2, 9, 3, 9].Merge = true; //Merge columns start and end range
+                    worksheetNew.Cells[2, 9, 3, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
+
 
                     //Add the headers
                     worksheetNew.Cells[2, 1].Value = "Registry";
                     worksheetNew.Cells[2, 2].Value = "Vessel";
                     worksheetNew.Cells[2, 3].Value = "Position";
-                    worksheetNew.Cells[2, 4].Value = "Report Date";
+                    worksheetNew.Cells[2, 4].Value = "Entry Date";
                     worksheetNew.Cells[2, 5].Value = "FO Difference [MT]";
-                    worksheetNew.Cells[2, 6].Value = "DO Difference [MT]";
+                    worksheetNew.Cells[2, 6].Value = "FO On Board [MT]";
+                    worksheetNew.Cells[2, 7].Value = "DO Difference [MT]";
+                    worksheetNew.Cells[2, 8].Value = "DO On Board [MT]";
+                    worksheetNew.Cells[2, 9].Value = "Remarks";
 
                     worksheetNew.Column(5).Style.WrapText = true;
                     worksheetNew.Column(6).Style.WrapText = true;
+                    worksheetNew.Column(7).Style.WrapText = true;
+                    worksheetNew.Column(8).Style.WrapText = true;
+                    worksheetNew.Column(9).Style.WrapText = true;
 
-                    
+
 
                     BunkerReport.Save();
 
