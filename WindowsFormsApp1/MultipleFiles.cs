@@ -30,8 +30,12 @@ public class MultipleFiles
         {
 
             var result = fileName.Substring(fileName.Length - 4);
+            var result_1 = fileName.Substring(fileName.Length - 5);
+            var result_2 = fileName.Substring(fileName.Length - 3);
             Console.WriteLine("Last characters: {0}", result);
-            if (result == ".xls" || result == ".xlt")
+            Console.WriteLine("Last characters: {0}", result_1);
+            Console.WriteLine("Last characters: {0}", result_2);
+            if (result == ".xml" || result == ".xls" || result == ".xlt" || result_1 == ".xlsx" || result_2 == "xls" || result_2 == "xlt")
             {
                 ProcessFile(fileName);
                 Console.WriteLine("File path ID: {0}", index);

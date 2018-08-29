@@ -336,6 +336,36 @@ namespace WindowsFormsApp1
             }
         }
 
+        //================================================================
+        // Exctracts The Necessary Information from the given .xlsx File
+        //================================================================
+        /*
+        public void ExctractInfo_NEW()
+        {
+            Counter = 0;
+            foreach (string BRFile in stringList)
+            {
+
+                Counter = Counter + 1;
+                Console.WriteLine("\n File path to be examined: {0} ", BRFile);
+
+                FileInfo File = new FileInfo(BRFile);
+                //TODO ADD: Data and creation of new worksheet option
+                using (var BunkerReport = new ExcelPackage(File))
+                {
+                    ExcelWorksheet worksheet = BunkerReport.Workbook.Worksheets[1];
+
+                    var tempName = worksheet.Cells[6, 3].Value;
+
+                    Console.WriteLine("\nDATA RETRIEVED:");
+                    Console.WriteLine(" Vessel Name :  {0}", tempName.ToString());
+                    
+
+                    BunkerReport.Save();
+                }
+            }
+        }
+        */
 
         //================================================================
         // Exctracts The Necessary Information from the given .xlsx File
@@ -350,8 +380,11 @@ namespace WindowsFormsApp1
                 Console.WriteLine("\n File path to be examined: {0} ", BunkerReport);
 
                 var excelFile = new ExcelQueryFactory(BunkerReport);
+                //{
+                //    ReadOnly = true
+                //};
                 excelFile.DatabaseEngine = LinqToExcel.Domain.DatabaseEngine.Ace;
-
+ 
                 var worksheetNames = excelFile.GetWorksheetNames();
                 Console.WriteLine(worksheetNames);
 
@@ -369,6 +402,7 @@ namespace WindowsFormsApp1
                     i = i + 1;
                 }
 
+                //SheetName = "Report";
                 Console.WriteLine("Sheetname: {0}", SheetName);
 
                 var cellID = from c1 in excelFile.WorksheetRangeNoHeader("C6", "E6", SheetName) select c1; //Selects data within the B3 to G10 cell range
@@ -408,6 +442,8 @@ namespace WindowsFormsApp1
                 {
                     Vessel.RecordDateTime = a5[0];
                 }
+
+                excelFile.Dispose();
 
                 Console.WriteLine("\nDATA RETRIEVED:");
                 Console.WriteLine(" Vessel Name :  {0}", Vessel.Name);
@@ -486,6 +522,8 @@ namespace WindowsFormsApp1
 
                     WriteIntoDatabaseXlsxNEW(BunkerDatabaseFilePathMonthly, AssetName);
                 }
+
+
 
             }
         }
@@ -871,6 +909,7 @@ namespace WindowsFormsApp1
 
                 Console.WriteLine(" Call to ExtractInfo...");
                 Console.WriteLine();
+                //ExctractInfo_NEW();
 
                 ExctractInfo();
                 progressBar1.Value = 80;
