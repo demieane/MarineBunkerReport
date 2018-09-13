@@ -412,19 +412,15 @@ namespace WindowsFormsApp1
                 var cellPosition = from c2 in excelFile.WorksheetRangeNoHeader("H6", "J6", SheetName) select c2;
                 var cellFO = from c3 in excelFile.WorksheetRangeNoHeader("J29", "J29", SheetName) select c3;
                 var cellDO = from c4 in excelFile.WorksheetRangeNoHeader("J43", "J43", SheetName) select c4;
-                
-
-                //var cellFO = from c3 in excelFile.WorksheetRangeNoHeader("J27", "J27", SheetName) select c3;
-                //var cellDO = from c4 in excelFile.WorksheetRangeNoHeader("J39", "J39", SheetName) select c4;
 
                 var cellDateTime = from c5 in excelFile.WorksheetRangeNoHeader("H7", "J7", SheetName) select c5;
                 var cellRemarks = from c6 in excelFile.WorksheetRangeNoHeader("B45", "J47", SheetName) select c6;
+                //var cellRemarks = from c6 in excelFile.WorksheetRangeNoHeader("B45", "B45", SheetName) select c6;
 
                 var cellFORemaining = from c7 in excelFile.WorksheetRangeNoHeader("J26", "J26", SheetName) select c7;
+                //var cellFORemaining = from c7 in excelFile.WorksheetRangeNoHeader("J26", "J26", SheetName) select c7;
 
                 var cellDORemaining = from c8 in excelFile.WorksheetRangeNoHeader("J40", "J40", SheetName) select c8;
-
-                //VesselInfo Vessel = new VesselInfo();
 
                 foreach (var a1 in cellID)
                 {
@@ -456,20 +452,22 @@ namespace WindowsFormsApp1
                     Vessel.RecordDateTime = a5[0];
                 }
 
+                foreach (var a6 in cellRemarks)
+                {
+                     Vessel.Remarks = a6[0].ToString();
+                }
+
                 int ii = 0;
                 foreach (var a6 in cellRemarks)
                 {
-                    Console.WriteLine(" ii : {0}", ii);
-                    Console.WriteLine(" Remarks : {0}", a6[ii].ToString());
+                    //Console.WriteLine(" ii : {0}", ii);
+                    //Console.WriteLine(" Remarks : {0}", a6[ii].ToString());
                     if (!string.IsNullOrEmpty(a6[ii].ToString()))
                     {
                         Vessel.Remarks = a6[ii].ToString();
-                        Console.WriteLine(" Vessel.Remarks : {0}", Vessel.Remarks);
+                        //Console.WriteLine(" Vessel.Remarks : {0}", Vessel.Remarks);
                     }
-                    
-                    //Console.WriteLine(" Vessel.Remarks : {0}", Vessel.Remarks);
                     ii = ii + 1;
-                    //Vessel.Remarks = a6[0].ToString();
                 }
 
                 foreach (var a7 in cellFORemaining)
@@ -477,13 +475,10 @@ namespace WindowsFormsApp1
                     Vessel.FO_1 = float.Parse(a7[0]);
                 }
 
-                
                 foreach (var a8 in cellDORemaining)
                 {
                     Vessel.DO_1 = float.Parse(a8[0]);
                 }
-                
-
 
                 excelFile.Dispose();
 
@@ -503,29 +498,57 @@ namespace WindowsFormsApp1
                 
                 foreach (string line in CurrentFleet)
                 {
+                    Console.WriteLine("===================================================");
+                    Console.WriteLine("Type of Current Fleet component {0}", line.GetType());
+
                     Console.WriteLine("EUREKA {0}", eureka);
                     Console.WriteLine("cnt {0}", cnt);
+
+                    string text1 = CurrentFleet[cnt];// "String with non breaking spaces.";
+                    text1 = System.Text.RegularExpressions.Regex.Replace(text1, @"\u00A0", " ");
+
+                    string text2 = Vessel.Name;// "String with non breaking spaces.";
+                    text2 = System.Text.RegularExpressions.Regex.Replace(text2, @"\u00A0", " ");
+
+                    bool Example_v0 = String.Equals(text1, text2, StringComparison.InvariantCultureIgnoreCase);
+                    Console.WriteLine("TEST {0}", Example_v0);
+
+                    //bool Example_v0 = String.Equals(CurrentFleet[cnt].ToString(), Vessel.Name.ToString(), StringComparison.OrdinalIgnoreCase);
+
+                    //string[] NameSplit1 = text1.Split(' ');
+                    //string[] NameSplit2 = text2.Split(' ');
+                    //bool Example_v1 = String.Equals(NameSplit1[0], NameSplit2[0]);
+                    //Console.WriteLine("Example_v1 {0}", Example_v1);
+                    //if (Example_v1)
+                    //{
+                      //  bool Example_v2 = String.Equals(NameSplit1[1], NameSplit2[1]);
+
+                        
+                      // Console.WriteLine("Example_v2 {0}", Example_v2);
+
+                    //}
                     
-                    bool Example_v0 = String.Equals(CurrentFleet[cnt].ToString(), Vessel.Name.ToString());
-
-                    string Example_v1 = "MV \"" + CurrentFleet[cnt] + "\"";
-                    bool Example_v11 = String.Equals(Example_v1.ToString(), Vessel.Name.ToString());
-
-                    string Example_v2 = "M/V  \"" + CurrentFleet[cnt] + "\"";
-                    bool Example_v22 = String.Equals(Example_v1.ToString(), Vessel.Name.ToString());
 
 
-                    int Example_v3 = String.Compare(Example_v2, Vessel.Name.ToString());
-                    //Console.WriteLine(String.Compare(Example_v2, Vessel.Name.ToString()));
+                    string Example_v1 = "MV \"" + text1 + "\"";
+                    bool Example_v11 = String.Equals(Example_v1, text2, StringComparison.OrdinalIgnoreCase);
 
-                    Console.WriteLine("Vessel.Name {0}", Vessel.Name);
-                    Console.WriteLine("CurrentFleet[cnt] {0}", CurrentFleet[cnt]);
+                    string Example_v2 = "M/V  \"" + text1 + "\"";
+                    bool Example_v22 = String.Equals(Example_v1, text2, StringComparison.OrdinalIgnoreCase);
 
-                    Console.WriteLine(Example_v0);
-                    Console.WriteLine("Example_v1 {0}", Example_v1);
-                    Console.WriteLine("Example_v2 {0}", Example_v2);
-                    Console.WriteLine(Example_v11);
-                    Console.WriteLine(Example_v22);
+                    int Example_v3 = String.Compare(Example_v2, text2);
+                    //Console.WriteLine(String.Compare(Example_v2, text2));
+
+                    //Console.WriteLine("Vessel.Name {0}", Vessel.Name);
+                    //Console.WriteLine("CurrentFleet[cnt] {0}", CurrentFleet[cnt]);
+                    //Console.WriteLine(Int32.Parse(firstNormalized.ToString()));
+                    //Console.WriteLine(Int32.Parse(secondNormalized.ToString()));
+
+                    //Console.WriteLine(Example_v0);
+                    
+                    //Console.WriteLine(Example_v11);
+                    //Console.WriteLine(Example_v22);
+                    //Console.WriteLine(Example_v3);
 
                     if (Example_v0 || Example_v11 || Example_v22 || Example_v3==0)
                     {
@@ -614,7 +637,7 @@ namespace WindowsFormsApp1
                 worksheet.Cells[1, colIndex_2 + 1, 1, colIndex_2 + 3].Merge = true; //Merge columns start and end range
                 worksheet.Cells[1, colIndex_2 + 1, 1, colIndex_2 + 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
 
-                worksheet.Cells[rowIndex_2, colIndex_2 + 1].Value = DateSplit[0].ToString();
+                worksheet.Cells[rowIndex_2, colIndex_2 + 1].Value = Vessel.RecordDateTime;// DateSplit[0].ToString();
                 worksheet.Cells[rowIndex_2, colIndex_2 + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
                 worksheet.Cells[rowIndex_2, colIndex_2 + 2].Value = Vessel.FO;
@@ -705,10 +728,14 @@ namespace WindowsFormsApp1
                 {
                     worksheet.Cells[rowCnt + 1, 3].Value = "At Sea";
                 }
+                else
+                {
+                    worksheet.Cells[rowCnt + 1, 3].Value = "At Port";
+                }
 
-                string[] DateSplit = Vessel.RecordDateTime.Split(' ');
+                //string[] DateSplit = Vessel.RecordDateTime.Split(' ');
 
-                worksheet.Cells[rowCnt + 1, 4].Value = DateSplit[0];
+                worksheet.Cells[rowCnt + 1, 4].Value = Vessel.RecordDateTime;// DateSplit[0];
 
                 worksheet.Cells[rowCnt + 1, 5].Value = Vessel.FO;
 

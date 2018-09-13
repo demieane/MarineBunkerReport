@@ -127,7 +127,7 @@ namespace WindowsFormsApp1
             //worksheet.Column(1).Width = columnWidth + 5;
             worksheet.Column(2).Width = columnWidth + 5;
             worksheet.Column(3).Width = columnWidth - 3 ;
-            worksheet.Column(4).Width = columnWidth;
+            worksheet.Column(4).Width = columnWidth + 5;
             worksheet.Column(5).Width = columnWidth;
             worksheet.Column(6).Width = columnWidth;
             worksheet.Column(7).Width = columnWidth;
@@ -220,16 +220,22 @@ namespace WindowsFormsApp1
 
                     // Add a new worksheet to the empty workbook
                     ExcelWorksheet worksheetNew = BunkerReport.Workbook.Worksheets.Add(WorkSheetName);
-                    /*
+                    
                     //Set the column 1 width to 50
                     double columnWidth = 15;
                     //worksheet.Column(1).Width = columnWidth - 15;
                     worksheetNew.Column(2).Width = columnWidth + 5;
                     worksheetNew.Column(3).Width = columnWidth - 5;
-                    worksheetNew.Column(4).Width = columnWidth ;
+                    worksheetNew.Column(4).Width = columnWidth + 5 ;
                     worksheetNew.Column(5).Width = columnWidth;
                     worksheetNew.Column(6).Width = columnWidth;
-                    */
+                    
+
+                    worksheetNew.Column(5).Style.WrapText = true;
+                    worksheetNew.Column(6).Style.WrapText = true;
+                    worksheetNew.Column(7).Style.WrapText = true;
+                    worksheetNew.Column(8).Style.WrapText = true;
+                    worksheetNew.Column(9).Style.WrapText = true;
 
                     worksheetNew.Cells[1, 1].Value = "BUNKER REPORT DATASHEET";
 
@@ -292,14 +298,6 @@ namespace WindowsFormsApp1
                     worksheetNew.Cells[2, 7].Value = "DO Difference [MT]";
                     worksheetNew.Cells[2, 8].Value = "DO On Board [MT]";
                     worksheetNew.Cells[2, 9].Value = "Remarks";
-
-                    worksheetNew.Column(5).Style.WrapText = true;
-                    worksheetNew.Column(6).Style.WrapText = true;
-                    worksheetNew.Column(7).Style.WrapText = true;
-                    worksheetNew.Column(8).Style.WrapText = true;
-                    worksheetNew.Column(9).Style.WrapText = true;
-
-
 
                     BunkerReport.Save();
 
