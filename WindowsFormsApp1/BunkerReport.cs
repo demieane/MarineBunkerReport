@@ -513,23 +513,6 @@ namespace WindowsFormsApp1
                     bool Example_v0 = String.Equals(text1, text2, StringComparison.InvariantCultureIgnoreCase);
                     Console.WriteLine("TEST {0}", Example_v0);
 
-                    //bool Example_v0 = String.Equals(CurrentFleet[cnt].ToString(), Vessel.Name.ToString(), StringComparison.OrdinalIgnoreCase);
-
-                    //string[] NameSplit1 = text1.Split(' ');
-                    //string[] NameSplit2 = text2.Split(' ');
-                    //bool Example_v1 = String.Equals(NameSplit1[0], NameSplit2[0]);
-                    //Console.WriteLine("Example_v1 {0}", Example_v1);
-                    //if (Example_v1)
-                    //{
-                      //  bool Example_v2 = String.Equals(NameSplit1[1], NameSplit2[1]);
-
-                        
-                      // Console.WriteLine("Example_v2 {0}", Example_v2);
-
-                    //}
-                    
-
-
                     string Example_v1 = "MV \"" + text1 + "\"";
                     bool Example_v11 = String.Equals(Example_v1, text2, StringComparison.OrdinalIgnoreCase);
 
@@ -537,18 +520,6 @@ namespace WindowsFormsApp1
                     bool Example_v22 = String.Equals(Example_v1, text2, StringComparison.OrdinalIgnoreCase);
 
                     int Example_v3 = String.Compare(Example_v2, text2);
-                    //Console.WriteLine(String.Compare(Example_v2, text2));
-
-                    //Console.WriteLine("Vessel.Name {0}", Vessel.Name);
-                    //Console.WriteLine("CurrentFleet[cnt] {0}", CurrentFleet[cnt]);
-                    //Console.WriteLine(Int32.Parse(firstNormalized.ToString()));
-                    //Console.WriteLine(Int32.Parse(secondNormalized.ToString()));
-
-                    //Console.WriteLine(Example_v0);
-                    
-                    //Console.WriteLine(Example_v11);
-                    //Console.WriteLine(Example_v22);
-                    //Console.WriteLine(Example_v3);
 
                     if (Example_v0 || Example_v11 || Example_v22 || Example_v3==0)
                     {
@@ -646,7 +617,6 @@ namespace WindowsFormsApp1
                 worksheet.Cells[rowIndex_2, colIndex_2 + 3].Value = Vessel.DO;
                 worksheet.Cells[rowIndex_2, colIndex_2 + 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
-
                 // DATE REPORTED
                 worksheet.Cells[2, colIndex_2 + 1].Value = "Reported";
                 worksheet.Cells[2, colIndex_2 + 1].Style.Font.Bold = true;
@@ -655,8 +625,6 @@ namespace WindowsFormsApp1
 
                 worksheet.Cells[2, colIndex_2 + 1, 3, colIndex_2 + 1].Merge = true; //Merge columns start and end range
                 worksheet.Cells[2, colIndex_2 + 1, 3, colIndex_2 + 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
-
-                
 
                 // FO
                 worksheet.Cells[1, colIndex_2 + 2].Style.WrapText = true;
@@ -677,8 +645,6 @@ namespace WindowsFormsApp1
 
                 worksheet.Cells[2, colIndex_2 + 3, 3, colIndex_2 + 3].Merge = true; //Merge columns start and end range
                 worksheet.Cells[2, colIndex_2 + 3, 3, colIndex_2 + 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // Alignment is center
-
-               
 
                 // Colour cells when values are out of range
                 worksheet.Cells[rowIndex_2, colIndex_2 + 2].Style.Numberformat.Format = "0.00";
